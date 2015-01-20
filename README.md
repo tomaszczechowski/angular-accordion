@@ -1,2 +1,2 @@
-# angular-accordion
+# Angular asccordion
 Accordion module for AngularJS
