@@ -1,4 +1,4 @@
-<div class="accordion-item">
-	<div class="accordion-item-header"></div>
+<div class="accordion-item" ng-class="getCssClasses();">
+	<div class="accordion-item-header" ng-click="toggleOpen();">{{header}}</div>
 	<div class="accordion-item-content" ng-transclude></div>
 </div>

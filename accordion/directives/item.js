@@ -9,7 +9,8 @@
       replace: true,
       transclude: true,
       scope: {
-        initOpen: '@'
+        initOpen: '@',
+        header: '@'
       },
       controller: 'item',
       templateUrl: 'scripts/accordion/views/item.html'
