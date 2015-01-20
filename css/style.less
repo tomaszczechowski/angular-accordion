@@ -1,0 +1,34 @@
+.accordion {
+	width: 200px;
+	font-family: Arial, Tahoma;
+
+	.accordion-item {
+		width: 200px;
+		overflow: hidden;
+
+		.accordion-item-header {
+			width: 160px;
+			color: gray;
+			font-weight: 600;
+			padding: 10px 20px;
+			background-color: #f2f2f2;
+		}
+
+		.accordion-item-content {
+			font-size: 11px;
+			padding: 10px;
+		}
+
+		&.accordion-item-open {
+			.accordion-item-content {
+				display: block;
+			}
+		}
+
+		&.accordion-item-close {
+			.accordion-item-content {
+				display: none;
+			}
+		}
+	}
+}
