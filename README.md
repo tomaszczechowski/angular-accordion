@@ -69,3 +69,7 @@ Header of collapsible element.
 
 ### Release notes
 - 0.1.0 Accordion first acting version
+
+##### Licene MIT
+##### Author: Tomasz Czechowski 
+- Twitter: https://twitter.com/t_czechowski
