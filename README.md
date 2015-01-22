@@ -1,5 +1,5 @@
 # Angular asccordion <img src="https://img.shields.io/packagist/l/doctrine/orm.svg" />
-> Light and simply UI accordion module for AngularJS
+> Light and simply UI accordion module for Angular
 
 ### Compatibility
 - IE Browsers: IE8+, Others
@@ -70,6 +70,6 @@ Header of collapsible element.
 ### Release notes
 - 0.1.0 Accordion first acting version
 
-##### Licene MIT
+##### Licence MIT
 ##### Author: Tomasz Czechowski 
 - Twitter: https://twitter.com/t_czechowski
