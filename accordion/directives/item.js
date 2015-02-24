@@ -13,7 +13,7 @@
         header: '@'
       },
       controller: 'item',
-      templateUrl: 'scripts/accordion/views/item.html'
+      templateUrl: '/accordion/views/item.html'
     };
   });
 })();

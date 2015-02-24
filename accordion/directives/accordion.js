@@ -14,7 +14,7 @@
         closeClass: '@'
       },
       controller: 'accordion',
-      templateUrl: 'scripts/accordion/views/accordion.html'
+      templateUrl: '/accordion/views/accordion.html'
     };
   });
 })();
