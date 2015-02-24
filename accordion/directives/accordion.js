@@ -9,6 +9,7 @@
       replace: true,
       transclude: true,
       scope: {
+        id: '@',
         oneOpen: '@',
         openClass: '@',
         closeClass: '@'

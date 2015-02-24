@@ -4,7 +4,7 @@
 	var app = angular.module('accordion');
 
 	app.controller('item', function ($scope, AccordionService, AccordionItemService) {
-		var model = AccordionItemService.add(!!$scope.initOpen, $scope.header);
+		var model = AccordionItemService.add($scope.id, !!$scope.initOpen, $scope.header);
 
 		$scope.toggleOpen = function () {
 			var isOpen = model.isOpen();

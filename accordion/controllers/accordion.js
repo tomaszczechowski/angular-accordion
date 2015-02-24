@@ -4,18 +4,24 @@
 	var app = angular.module('accordion');
 
 	app.controller('accordion', function ($scope, AccordionService) {
+		var options = {
+			id: $scope.id
+		};
+		
 		if ($scope.openClass) {
-			AccordionService.setOpenClass($scope.openClass);
+			options.openClass = $scope.openClass;
 		}
 
 		if ($scope.closeClass) {
-			AccordionService.setCloseClass($scope.closeClass);
+			options.closeClass = $scope.closeClass;
 		}
 
 		if ($scope.oneOpen) {
 			var oneOpen = $scope.oneOpen === 'true';
-			AccordionService.setOneOpen(oneOpen);
+			options.oneOpen = oneOpen;
 		}
+		
+		AccordionService.add(options);
 	});
 
 })();
