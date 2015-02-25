@@ -1,4 +1,4 @@
-# Angular asccordion <img src="https://img.shields.io/packagist/l/doctrine/orm.svg" />
+# Angular accordion <img src="https://img.shields.io/packagist/l/doctrine/orm.svg" />
 > Light and simply UI accordion module for Angular
 
 ### Compatibility
