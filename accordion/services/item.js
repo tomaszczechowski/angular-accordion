@@ -4,8 +4,8 @@
   var app = angular.module('accordion');
 
   app.service('AccordionItemService', function() {
-  	var _items = [];
-
+  	var _items = {};
+  	
   	var ItemModel = function (options) {
   		this._open = options.open;
   		this._header = options.header;
@@ -26,7 +26,7 @@
   	};
 
     return {
-    	add: function (open, header) {
+    	add: function (id, open, header) {
     		var item = new ItemModel({
     			open: open,
     			header: header

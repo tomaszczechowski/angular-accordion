@@ -22,6 +22,11 @@
 		}
 		
 		AccordionService.add(options);
+		
+		this.getId = function () {
+			return $scope.id;
+		};
+		
 	});
 
 })();

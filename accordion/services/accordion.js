@@ -3,59 +3,102 @@
 
   var app = angular.module('accordion');
 
-  app.service('AccordionService', function() {
-    var AccordionCollection = function () {
-      this._items = [];
-    };
+  var AccordionCollection = function () {
+    this._accordions = [];
+  };
+  
+  AccordionCollection.prototype = {
+    add: function (accordion) {
+      this._accordions.push(accordion);
+    },
     
-    AccordionCollection.prototype = {
-      add: function (accordion) {
-        this._items.push(accordion);
-      },
-      
-      find: function (id) {
-        for (var i = 0; i < this._items.length; i++) {
-          if (this._items[i].getId() === id) {
-            return this._items[i];
-          }
+    find: function (id) {
+      for (var i = 0; i < this._accordions.length; i++) {
+        if (this._accordions[i].getId() === id) {
+          return this._accordions[i];
         }
-        
-        return null;
       }
-    };
+      
+      return null;
+    }
+  };
     
-    var Accordion = function (options) {
-      this._id = options.id;  
-      this._oneOpen 	 = options.oneOpen || true;
-  	  this._openClass  = options.openClass || 'close';
-  		this._closeClass = options.closeClass || 'close';
-    };
+  var Accordion = function (options) {
+    this._id = options.id;  
+    this._oneOpen = options.oneOpen || true;
+	  this._openClass = options.openClass || 'open';
+		this._closeClass = options.closeClass || 'close';
+		this._items = [];
+  };
+  
+  Accordion.prototype = {
+    getId: function () {
+      return this._id;
+    },
     
-    Accordion.prototype = {
-      setOneOpen: function (_value) {
-    		this._oneOpen = _value;
-    	},
+    setOneOpen: function (_value) {
+  		this._oneOpen = _value;
+  	},
 
-    	getOneOpen: function () {
-    		return this._oneOpen;
-    	},
+  	getOneOpen: function () {
+  		return this._oneOpen;
+  	},
 
-    	setOpenClass: function (_class) {
-    		this._openClass = _class;
-    	},
+  	setOpenClass: function (_class) {
+  		this._openClass = _class;
+  	},
 
-    	getOpenClass: function () {
-    		return this._openClass;
-    	},
+  	getOpenClass: function () {
+  		return this._openClass;
+  	},
 
-    	setCloseClass: function (_class) {
-    		this._closeClass = _class;
-    	},
+  	setCloseClass: function (_class) {
+  		this._closeClass = _class;
+  	},
 
-    	getCloseClass: function () {
-    		return this._closeClass;
-    	}
-    };
+  	getCloseClass: function () {
+  		return this._closeClass;
+  	},
+  	
+  	addItem: function (options) {
+  	  var item = new ItemModel({
+  			open: options.open,
+  			header: options.header
+  		});
+
+    	this._items.push(item);
+
+  		return item;
+  	},
+  	
+  	closeItems: function () {
+  	  for (var i = 0; i < this._items.length; i++) {
+  	    this._items[i].close();
+  	  }
+  	}
+  };
+  
+  var ItemModel = function (options) {
+		this._open = options.open;
+		this._header = options.header;
+	};
+
+	ItemModel.prototype = {
+		open: function () {
+			this._open = true;
+		},
+
+		close: function () {
+			this._open = false;
+		},
+
+		isOpen: function () {
+			return this._open;
+		}
+	};
+    
+  app.service('AccordionService', function() {
+    var Collection = new AccordionCollection();
     
   	return {
   	  add: function (options) {
@@ -66,11 +109,11 @@
   	      closeClass: options.closeClass
   	    });
   	    
-  	    AccordionCollection.add(accordion);
+  	    Collection.add(accordion);
   	  },
   	  
     	get: function (id) {
-    	  return AccordionCollection.find(id);
+    	  return Collection.find(id);
     	}
     };
   });

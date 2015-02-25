@@ -6,6 +6,7 @@
   app.directive('accordionItem', function() {
     return {
       restrict: 'EA',
+      require: '^accordion',
       replace: true,
       transclude: true,
       scope: {
@@ -13,7 +14,10 @@
         header: '@'
       },
       controller: 'item',
-      templateUrl: '/accordion/views/item.html'
+      templateUrl: '/accordion/views/item.html',
+      link: function (scope, element, attrs, accordionCtrl) {
+        scope.initMe(accordionCtrl.getId());
+      }
     };
   });
 })();

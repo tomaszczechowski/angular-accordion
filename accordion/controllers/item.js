@@ -3,25 +3,34 @@
 
 	var app = angular.module('accordion');
 
-	app.controller('item', function ($scope, AccordionService, AccordionItemService) {
-		var model = AccordionItemService.add($scope.id, !!$scope.initOpen, $scope.header);
+	app.controller('item', function ($scope, AccordionService) {
+		var Accordion, itemModel;
+		
+		$scope.initMe = function (id) {
+			Accordion = AccordionService.get(id);
 
+			itemModel = Accordion.addItem({
+				open: !!$scope.initOpen, 
+				header: $scope.header
+			});
+		};
+		
 		$scope.toggleOpen = function () {
-			var isOpen = model.isOpen();
+			var isOpen = itemModel.isOpen();
 
-			if (!isOpen && AccordionService.getOneOpen()) {
-				AccordionItemService.closeAll();
+			if (!isOpen && Accordion.getOneOpen()) {
+				Accordion.closeItems();
 			}
 
-			model.isOpen()
-				? model.close()
-				: model.open();
+			itemModel.isOpen()
+				? itemModel.close()
+				: itemModel.open();
 		};
 
 		$scope.getCssClasses = function () {
-			return model.isOpen()
-				? AccordionService.getOpenClass()
-				: AccordionService.getCloseClass();
+			return itemModel.isOpen()
+				? Accordion.getOpenClass()
+				: Accordion.getCloseClass();
 		};
 	});
 
