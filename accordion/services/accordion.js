@@ -3,6 +3,25 @@
 
   var app = angular.module('accordion');
 
+  var ItemModel = function (options) {
+		this._open = options.open;
+		this._header = options.header;
+	};
+
+	ItemModel.prototype = {
+		open: function () {
+			this._open = true;
+		},
+
+		close: function () {
+			this._open = false;
+		},
+
+		isOpen: function () {
+			return this._open;
+		}
+	};
+	
   var AccordionCollection = function () {
     this._accordions = [];
   };
@@ -77,25 +96,6 @@
   	  }
   	}
   };
-  
-  var ItemModel = function (options) {
-		this._open = options.open;
-		this._header = options.header;
-	};
-
-	ItemModel.prototype = {
-		open: function () {
-			this._open = true;
-		},
-
-		close: function () {
-			this._open = false;
-		},
-
-		isOpen: function () {
-			return this._open;
-		}
-	};
     
   app.service('AccordionService', function() {
     var Collection = new AccordionCollection();
