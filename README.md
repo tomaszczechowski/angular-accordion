@@ -11,6 +11,15 @@
 
 ### Options
 
++ **id (required):**
+Set id of accordion element. It is required parameter to recognise accordion in his model.
+
+```html
+<accordion id="1">
+    ...
+</accordion>
+```
+
 + **one-open (default: true):**
 Open more then one collapsible element at a time.
 
@@ -68,6 +77,7 @@ Header of collapsible element.
 ```
 
 ### Release notes
+- 0.2.0 Added possibility of initialization more than one accordion
 - 0.1.0 Accordion first acting version
 
 ##### Licence MIT
